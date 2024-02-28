@@ -37,9 +37,16 @@ def train(dataloader, model, optimizer, criterion, device, is_topk):
             input = input[:, :torch.max(seq_len), :]
             input, label = input.float().to(device), label.float().to(device)
             logits, logits2 = model(input, seq_len)
+            print(f'Labels: \n {label} \n')
+
+            print(f'logits: \n {logits} \n')
+            print(f'logits: \n {logits2} \n')
             clsloss = CLAS(logits, label, seq_len, criterion, device, is_topk)
             clsloss2 = CLAS(logits2, label, seq_len, criterion, device, is_topk)
             croloss = CENTROPY(logits, logits2, seq_len, device)
+            print(f'clsloss: \n {clsloss} \n')
+            print(f'clsloss2: \n {clsloss2} \n')
+            print(f'croloss: \n {croloss} \n')
 
             total_loss = clsloss + clsloss2 + 5*croloss
             optimizer.zero_grad()

@@ -1,7 +1,7 @@
 import os
 import glob
 
-root_path = 'xx/vggish-features/test'    ## the path of features
+root_path = 'Features/vggish-features/test'    ## the path of features
 files = sorted(glob.glob(os.path.join(root_path, "*.npy")))
 violents = []
 normal = []

@@ -56,6 +56,7 @@ if __name__ == '__main__':
     pr_auc, pr_auc_online = test(test_loader, model, device, gt)
     print('Random initalization: offline pr_auc:{0:.4}; online pr_auc:{1:.4}\n'.format(pr_auc, pr_auc_online))
     for epoch in range(args.max_epoch):
+        print(f'==========================EPOCH: {epoch}=====================================')
         scheduler.step()
         st = time.time()
         train(train_loader, model, optimizer, criterion, device, is_topk)
