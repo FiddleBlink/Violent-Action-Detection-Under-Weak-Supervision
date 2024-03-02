@@ -13,7 +13,7 @@ import time
 
 if __name__ == '__main__':
     args = option.parser.parse_args()
-    device = torch.device("cuda")
+    device = torch.device("cpu")
 
     test_loader = DataLoader(Dataset(args, test_mode=True),
                               batch_size=5, shuffle=False,
