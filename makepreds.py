@@ -21,7 +21,7 @@ if __name__ == '__main__':
     model = Model(args)
     model = model.to(device)
     model_dict = model.load_state_dict(
-        {k.replace('module.', ''): v for k, v in torch.load('ckpt/wsanodet_mix2.pkl').items()})
+        {k.replace('module.', ''): v for k, v in torch.load('ckpt/wsanodet_mix2.pkl', map_location=torch.device('cpu')).items()})
     
     model.eval()
     with torch.no_grad():
